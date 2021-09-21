@@ -88,6 +88,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         res.status(200).json(data);
         break;
       }
+      case "OPTIONS": {
+        res.header("Access-Control-Allow-Methods", "POST, GET");
+        res.status(200).json({});
+        break;
+      }
       default: {
         res.status(400).json({ message: "Method not found" });
         break;
