@@ -60,13 +60,13 @@ export const getResource = async <R>(
     return collection.findOne(resource);
   });
 
-export const listResource = async <R>(
+export const listResource = async <R = any>(
   resource: OptionalId<R>,
   { collectionName, limit }: DBResourceOption
 ): Promise<R[]> =>
   await withDB((db) => {
     const collection = db.collection<R>(collectionName);
-    return collection.find(resource).limit(limit).toArray();
+    return collection.find(resource).sort({createdAt: -1}).limit(limit).toArray();
   });
 
 export const createResource = async <R>(
