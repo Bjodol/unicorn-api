@@ -89,7 +89,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         break;
       }
       case "OPTIONS": {
-        res.header("Access-Control-Allow-Methods", "POST, GET");
+        res.setHeader("Access-Control-Allow-Methods", "POST, GET");
         res.status(200).json({});
         break;
       }
